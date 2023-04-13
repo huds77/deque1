@@ -26,4 +26,26 @@ module.exports = class Deque{
             this.itens[0] = element
         }
     }
+    removeBlack(element){
+        this.itens[this.count] = element
+        this.count--
+    }
+    addFront(element){
+        if (this.isEmpty()){
+            this.addBlack(element)
+        }
+        else{
+            if (this.lowesCount > 0){
+                this.lowesCount--
+                this.itens[this.lowesCount] = element
+            }
+            else{
+                for (let i = this.count; i>0; i--){
+                    this.itens[i] = this.itens[i - 1]
+                }
+            }
+            this.count--
+            this.itens[0] = element
+        }
+    }
 }
